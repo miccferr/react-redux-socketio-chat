@@ -8,7 +8,7 @@ const ChannelListModalItem = (props) => {
        style={{ cursor: 'hand', color: 'black'}}
        onClick={() => onClick(channel)}>
       <li style={{cursor: 'pointer'}}>
-        <h5>{channel.name}</h5>
+        <h1>{channel.name}</h1>
       </li>
     </a>
   );

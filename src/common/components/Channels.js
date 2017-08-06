@@ -121,7 +121,7 @@ export default class Channels extends Component {
         <Modal key={2} show={this.state.moreChannelsModal} onHide={::this.closeMoreChannelsModal}>
           <Modal.Header closeButton >
             <Modal.Title>More Channels</Modal.Title>
-            <a onClick={::this.createChannelWithinModal} style={{'cursor': 'pointer', 'color': '#85BBE9'}}>
+            <a onClick={::this.createChannelWithinModal} style={{'cursor': 'pointer', 'color': '#ff96e7'}}>
               Create a channel
             </a>
           </Modal.Header>
@@ -152,7 +152,7 @@ export default class Channels extends Component {
         <div>
           <ul style={{display: 'flex', flexDirection: 'column', listStyle: 'none', margin: '0', overflowY: 'auto', padding: '0'}}>
             {filteredChannels.map(channel =>
-              <ChannelListItem  style={{paddingLeft: '0.8em', background: '#2E6DA4', height: '0.7em'}} messageCount={messages.filter(msg => {
+              <ChannelListItem  style={{paddingLeft: '0.8em', background: '#ff96e7', height: '0.7em'}} messageCount={messages.filter(msg => {
                 return msg.channelID === channel.name;
               }).length} channel={channel} key={channel.id} onClick={::this.handleChangeChannel} />
               )}

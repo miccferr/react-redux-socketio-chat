@@ -6,6 +6,9 @@ import * as actions from '../actions/actions';
 import * as authActions from '../actions/authActions';
 import TypingListItem from './TypingListItem';
 import { Modal, DropdownButton, MenuItem, Button, Navbar, NavDropdown, Nav, NavItem } from 'react-bootstrap';
+import ReactGiphy from "react-giphy"
+const bck="http://www.zingerbugimages.com/backgrounds/blue_and_green_stars.gif"
+
 
 export default class Chat extends Component {
 
@@ -101,9 +104,10 @@ export default class Chat extends Component {
     const filteredMessages = messages.filter(message => message.channelID === activeChannel);
     const username = this.props.user.username;
     const dropDownMenu = (
-      <div style={{'width': '21rem', 'top': '0', alignSelf: 'baseline', padding: '0', margin: '0', order: '1'}}>
-        <DropdownButton key={1} style={{'width': '21rem'}} id="user-menu"  bsSize="large" bsStyle="primary" title={username}>
-          <MenuItem style={{'width': '21rem'}} eventKey="4" onSelect={::this.handleSignOut}>Sign out</MenuItem>
+      <div style={{'width': '21rem', 'top': '0', alignSelf: 'baseline', padding: '0', margin: '0', order: '1','backgroundColor':'#ff96e7'}}>
+        <DropdownButton key={1} style={{'width': '21rem'  ,'backgroundColor':'#ff96e7'}} id="user-menu"  bsSize="large" bsStyle="primary" title={username}>
+        <span>ciao</span>
+          <MenuItem style={{'width': '21rem', 'backgroundColor':'#ff96e7'}} eventKey="4" onSelect={::this.handleSignOut}>Sign out</MenuItem>
         </DropdownButton>
       </div>
     );
@@ -127,37 +131,38 @@ export default class Chat extends Component {
       </div>
     );
     const mobileNav = (
-      <Navbar fixedTop style={{background: '#337ab7', color: 'white'}}>
+      <Navbar fixedTop style={{'backgroundColor':'#ff96e7', color: 'white'}}>
           <span style={{fontSize: '2em'}}>{username}</span>
           <Navbar.Toggle />
-        <Navbar.Collapse style={{maxHeight: '100%'}}>
+        <Navbar.Collapse style={{maxHeight: '100%', 'backgroundColor':'#ff96e7'}}>
           <Button bsStyle="primary" onSelect={::this.handleSignOut}> Sign out
           </Button>
-          <section style={{order: '2', marginTop: '1.5em'}}>
+          <section style={{order: '2', marginTop: '1.5em', 'backgroundColor':'#ff96e7'}}>
             <Channels socket={socket} onClick={::this.changeActiveChannel} channels={channels} messages={messages} dispatch={dispatch} />
           </section>
         </Navbar.Collapse>
       </Navbar>
     );
     const bigNav = (
-      <div className="nav">
+      <div className="nav" style={{'backgroundColor':'#fb65d8'}}>
         {dropDownMenu}
-        <section style={{order: '2', marginTop: '1.5em'}}>
+       <ReactGiphy tag='turtle' />
+        <section style={{order: '2', marginTop: '1.5em', 'backgroundColor':'#ff96e7'}}>
           <Channels socket={socket} onClick={::this.changeActiveChannel} channels={channels} messages={messages} dispatch={dispatch} />
         </section>
       </div>
     );
     return (
-      <div style={{margin: '0', padding: '0', height: '100%', width: '100%', display: '-webkit-box'}}>
+      <div style={{margin: '0', padding: '0', height: '100%', width: '100%', display: '-webkit-box','backgroundColor':'#ff96e7'}}>
         {screenWidth < 500 ? mobileNav : bigNav }
         <div className="main">
-          <header style={{background: '#FFFFFF', color: 'black', flexGrow: '0', order: '0', fontSize: '2.3em', paddingLeft: '0.2em'}}>
+          <header style={{background: '#FFFFFF', color: 'black', flexGrow: '0', order: '0', fontSize: '2.3em', paddingLeft: '0.2em',}}>
             <div>
             {activeChannel}
             </div>
           </header>
           {PrivateMessageModal}
-          <ul style={{wordWrap: 'break-word', margin: '0', overflowY: 'auto', padding: '0', paddingBottom: '1em', flexGrow: '1', order: '1'}} ref="messageList">
+          <ul style={{wordWrap: 'break-word', margin: '0', overflowY: 'auto', padding: '0', paddingBottom: '1em', flexGrow: '1', order: '1', backgroundImage: "url("+bck+ ")"}} ref="messageList">
             {filteredMessages.map(message =>
               <MessageListItem handleClickOnUser={::this.handleClickOnUser} message={message} key={message.id} />
             )}
@@ -190,3 +195,5 @@ export default class Chat extends Component {
     );
   }
 }
+
+

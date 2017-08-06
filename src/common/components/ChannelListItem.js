@@ -5,11 +5,11 @@ import { Button } from 'react-bootstrap';
 const ChannelListItem = (props) => {
   const { channel: selectedChannel, onClick, channel } = props;
   return (
-    <Button bsSize="xsmall" bsStyle="primary" >
+    <Button bsSize="xsmall" bsStyle="primary" style={{backgroundColor:'#ff96e7'}} >
       <a className={classnames({ selected: channel === selectedChannel })}
-         style={{ cursor: 'hand', color: 'white'}}
+         style={{ cursor: 'hand', color: 'white', backgroundColor:'#ff96e7'}}
          onClick={() => onClick(channel)}>
-        <li style={{textAlign: 'left', cursor: 'pointer', marginLeft: '2em'}}>
+        <li style={{textAlign: 'left', cursor: 'pointer', marginLeft: '2em', backgroundColor:'#ff96e7'}}>
           <h5>{channel.name}</h5>
         </li>
       </a>
